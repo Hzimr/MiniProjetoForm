@@ -11,12 +11,8 @@
         <h2 class="text-2xl font-semibold text-center mb-4">Formulário de Suitability</h2>
         <form id="formulario" class="flex flex-col gap-4">
             <div class="flex flex-col">
-                <input class="px-2 py-1 outline-none rounded-md border-solid border-2 w-full box-border focus:ring-2 focus:ring-blue-400" type="text" id="name" placeholder="Digite seu nome">
-                <span id="span" class="hidden">Nome deve ter no mínimo 2 caracteres</span>
-            </div>
-            <div>
-                <input type="number" id="age" placeholder="Digite sua idade">
-                <span id="span" class="hidden">Idade deve ser maior que 16</span>
+                <input class="px-2 py-1 outline-none rounded-md border-solid border-2 w-full box-border focus:ring-2 focus:ring-blue-400" type="text" id="name" placeholder="Digite seu nome" oninput="nameValidate()" required>
+                <span id="spanName" class="text-red-300">Nome deve ter no mínimo 2 caracteres</span>
             </div>
             <div>
                 <input type="email" id="email" placeholder="Digite seu email">
@@ -63,6 +59,19 @@
             <button class="border-none rounded-md p-1 mt-1 text-xl outline-none hover:bg-sky-400 bg-cyan-600 cursor-pointer transition-transform" type="submit">Enviar</button>
         </form>
     </div>
-    <script src="script.js"></script>
+    <script>
+        const form = document.getElementById('formulario');
+        const campoName = document.getElementById('name');
+        const spanName = document.getElementById('spanName');
+
+            function nameValidate(){
+            
+            const isValid = campoName.value.length > 1
+
+            spanName.className = `${isValid ? 'hidden' : 'text-red-300'}`;
+
+            return isValid
+        }
+    </script>
 </body>
 </html>
