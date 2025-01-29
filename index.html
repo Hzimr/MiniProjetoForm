@@ -9,23 +9,23 @@
 <body class="bg-blue-400 flex justify-center items-start min-h-screen pt-10">
     <div id="content" class="w-full max-w-lg bg-white p-6 rounded-lg shadow-lg overflow-auto">
         <h2 class="text-2xl font-semibold text-center mb-4">Formulário de Suitability</h2>
-        <form id="formulario" class="flex flex-col gap-4">
-            <div class="flex flex-col">
+        <form id="formulario" class="flex flex-col gap-3">
+            <div>
                 <input class="px-2 py-1 outline-none rounded-md border-solid border-2 w-full box-border focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-400" type="text" id="name" placeholder="Digite seu nome" oninput="nameValidate()" >
-                <span id="spanName" class="text-red-300">Nome deve ter no mínimo 2 caracteres</span>
+                <span id="spanName" class="text-transparent">Nome deve ter no mínimo 2 caracteres</span>
             </div>
             <div>
                 <input class="px-2 py-1 outline-none rounded-md border-solid border-2 w-full box-border focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-400" type="email" id="email" placeholder="Digite seu email" oninput="emailValidate()">
-                <span id="spanEmail" class="text-red-300">O e-mail digitado deve ser válido</span>
+                <span id="spanEmail" class="text-transparent">O e-mail digitado deve ser válido</span>
             </div>
             <div>
                 <input class="px-2 py-1 outline-none rounded-md border-solid border-2 w-full box-border focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-400" type="text" id="objective" placeholder="Digite seu objetivo" oninput="objectiveValidate()">
-                <span id="spanObjective" class="text-red-300">Objetivo deve ter no mínimo 4 caracteres</span>
+                <span id="spanObjective" class="text-transparent">Objetivo deve ter no mínimo 4 caracteres</span>
             </div>
             <p>Prazo dos investimentos:</p>
             <div id="box-select">
                 <div>
-                    <input type="radio" id="c" value="c" name="prazo">
+                    <input type="radio" id="c" value="c" name="prazo" checked>
                     <label for="c">Curto prazo (Até 2 anos)</label>
                 </div>
                 <div>
@@ -37,7 +37,6 @@
                     <label for="l">Longo Prazo (+ de 5 anos)</label>
                 </div>
             </div>
-            <span id="span" class="text-red-300">Selecione um prazo</span>
             <p>Quais investimentos você ja conhecia?</p>
             <div id="box-select">
                 <div>
@@ -73,21 +72,20 @@
 
         function nameValidate(){
             const isValidName = campoName.value.length > 1
-            spanName.className = `${isValidName ? 'text-transparent' : 'text-red-300'}`;
-
+            spanName.className = `${isValidName ? 'text-transparent' : 'text-red-500'}`;
             return isValidName
         }
 
         function emailValidate(){
             const isValidEmail = campoEmail.value.length > 1
-            spanEmail.className = `${isValidEmail ? 'text-transparent' : 'text-red-300'}`;
+            spanEmail.className = `${isValidEmail ? 'text-transparent' : 'text-red-500'}`;
 
             return isValidEmail
         }
 
         function objectiveValidate(){
             const isValidObjective = campoObjective.value.length > 3
-            spanObjective.className = `${isValidObjective ? 'text-transparent' : 'text-red-300'}`;
+            spanObjective.className = `${isValidObjective ? 'text-transparent' : 'text-red-500'}`;
 
             return isValidObjective
         }
