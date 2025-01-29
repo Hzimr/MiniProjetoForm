@@ -56,7 +56,8 @@
                     <label for="fi">Fundos de Investimento</label>
                 </div>
             </div>
-            <button class="border-none rounded-md p-1 mt-1 text-xl outline-none hover:bg-opacity-70 bg-indigo-300 cursor-pointer transition-transform" type="submit">Enviar</button>
+            <button class="border-transparent border-[1px] rounded-md p-1 mt-1 text-xl outline-none hover:bg-opacity-70 bg-indigo-300 cursor-pointer transition-transform focus:border-blue-950 focus:border-[1px] focus:bg-indigo-500" type="submit">Enviar</button>
+            <button class="text-white border-transparent border-[1px]  rounded-md p-1 mt-1 text-xl outline-none hover:bg-opacity-70 bg-red-600 cursor-pointer transition-transform focus:border-blue-950 focus:border-[1px] focus:bg-red-800" type="button" onclick="clearForm()">Limpar</button>
         </form>
     </div>
     <script>
@@ -70,6 +71,21 @@
 
         const campoObjective = document.getElementById('objective');
         const spanObjective = document.getElementById('spanObjective');
+        
+        form.addEventListener('submit', (event) =>{
+            event.preventDefault();
+            const isValidForm = nameValidate() && emailValidate() && objectiveValidate();
+            if (isValidForm) {
+                alert('Formulário enviado com sucesso!');
+                form.reset();
+            } else {
+                alert('Por favor, corrija os erros antes de enviar.')
+                nameValidate()
+                emailValidate()
+                objectiveValidate();
+            }
+        })
+
 
         function nameValidate(){
             const isValidName = campoName.value.length > 1
@@ -91,6 +107,9 @@
             return isValidObjective
         }
 
+        function clearForm() {
+            form.reset();
+        }
 
     </script>
 </body>
